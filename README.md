@@ -26,6 +26,17 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Paynet](http://paynet.uz) - Merchant
 - [Stripe](https://stripe.com/) - Merchant(Subscribe)
 
+## Featured Languages
+
+-  Uzbek
+-  Uzbek Krill
+-  Russian
+-  English
+-  Italian
+-  Spanish
+-  German
+
+
 ## Role documentation
 
 - [Laravel-permission](https://spatie.be/docs/laravel-permission/v6/introduction) - Laravel-permission
