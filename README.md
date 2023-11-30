@@ -39,6 +39,12 @@ You can clone from GitLab:
 git clone git@gitlab.com:IslamAbdurahman/skote_panel_with_spatie_click_payme_laravel.git
 ```
 
+You can clone from GitHub:
+
+```bash
+git clone git@github.com:IslamAbdurahman/skote_panel_with_spatie_click_payme_laravel.git
+```
+
 You can install composer:
 
 ```bash
