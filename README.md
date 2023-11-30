@@ -122,7 +122,7 @@ If you discover any security related issues, please email abdurahmanislam304@gma
 ## Credits
 
 - [GitHub](https://github.com/islamabdurahman)
-- [GitLab](https://github.com/islamabdurahman)
+- [GitLab](https://gitlab.com/islamabdurahman)
 ####
 - [TouTube](https://www.youtube.com/@IslamAbdurahman)
 - [Telegram](https://t.me/LiveLongevity)
