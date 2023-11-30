@@ -39,7 +39,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 ## Role documentation
 
-- [Laravel-permission](https://spatie.be/docs/laravel-permission/v6/introduction) - Laravel-permission
+- [Laravel-permission](https://spatie.be/docs/laravel-permission/v6/introduction) -Spatie Laravel-permission
 
 
 ## Installation
