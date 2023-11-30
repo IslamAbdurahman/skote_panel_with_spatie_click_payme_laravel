@@ -110,7 +110,12 @@ If you discover any security related issues, please email abdurahmanislam304@gma
 
 ## Credits
 
-- [Islombek](https://github.com/islamabdurahman)
+- [GitHub](https://github.com/islamabdurahman)
+- [GitLab](https://github.com/islamabdurahman)
+####
+- [TouTube](https://www.youtube.com/@IslamAbdurahman)
+- [Telegram](https://t.me/LiveLongevity)
+####
 - [All Contributors](../../contributors)
 
 ## License
