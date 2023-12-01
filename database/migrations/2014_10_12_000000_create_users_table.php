@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->date('dob');
             $table->text('avatar');
+            $table->integer('phone')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
