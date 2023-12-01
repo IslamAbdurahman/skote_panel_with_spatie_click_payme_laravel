@@ -13,10 +13,11 @@ return [
     |
     */
 
-    'reset' => 'Your password has been reset!',
-    'sent' => 'We have emailed your password reset link!',
-    'throttled' => 'Please wait before retrying.',
-    'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that email address.",
+    'reset' => 'Паролингиз қайта ўрнатилди!',
+    'sent' => 'Паролингизни тиклаш ҳаволасини электрон почта орқали юбордик!',
+    'throttled' => 'Қайта уринишдан олдин кутинг.',
+    'token' => 'Бу паролни тиклаш токени яроқсиз.',
+    'user' => "Ушбу электрон почта манзилига эга фойдаланувчини топа олмадик.",
 
 ];
+

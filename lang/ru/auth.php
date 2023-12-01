@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'Ushbu hisob ma`lumotlari bizning qaydlarimizga mos kelmaydi.',
-    'password' => 'Ko`rsatilgan parol noto`g`ri.',
-    'throttle' => 'Kirish uchun juda ko`p urinishlar. Iltimos, :soniya soniyadan keyin qayta urinib ko`ring.',
+    'failed' => 'Эти учетные данные не соответствуют нашим записям.',
+    'password' => 'Указанный пароль неверен.',
+    'throttle' => 'Слишком много попыток входа. Пожалуйста, попробуйте снова через :seconds секунд.',
 
 ];
