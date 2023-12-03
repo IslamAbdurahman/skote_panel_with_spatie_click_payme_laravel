@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -73,8 +74,9 @@ class RegisterController extends Controller
         if (request()->has('avatar')) {
             $avatar = request()->file('avatar');
             $avatarName = time() . '.' . $avatar->getClientOriginalExtension();
-            $avatarPath = public_path('/images/');
+            $avatarPath = Storage::path('public/images/');
             $avatar->move($avatarPath, $avatarName);
+            $avatarName = '/storage/images/' . $avatarName;
         }
 
         return User::create([
@@ -84,7 +86,7 @@ class RegisterController extends Controller
 //            'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'dob' => date('Y-m-d', strtotime($data['dob'])),
-            'avatar' => "/images/" . $avatarName,
+            'avatar' => $avatarName,
         ]);
     }
 }
