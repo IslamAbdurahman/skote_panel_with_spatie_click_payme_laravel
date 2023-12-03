@@ -93,6 +93,14 @@ User : admin@gmail.com
 Password : 123456
 ```
 
+## Swagger Usage
+------
+Run this code to generate Swagger
+
+```bash
+php artisan l5-swagger:generate
+```
+
 ## Payment Usage
 ------
 Placing routes for service in web.php
