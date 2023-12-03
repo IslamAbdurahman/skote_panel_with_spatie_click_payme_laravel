@@ -126,6 +126,13 @@ Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
 
 If you discover any security related issues, please email abdurahmanislam304@gmail.com instead of using the issue tracker.
 
+
+## Additional URL
+
+- Telescope --- https://your-domain.com/telescope
+- Swagger --- https://your-domain.com/telescope
+
+
 ## Credits
 
 - [GitHub](https://github.com/islamabdurahman)
