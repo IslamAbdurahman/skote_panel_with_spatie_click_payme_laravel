@@ -15,17 +15,20 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('username')->unique()->nullable();
+            $table->string('phone')->unique();
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->date('dob');
             $table->text('avatar');
-            $table->integer('phone')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
         User::create([
             'name' => 'admin',
+            'username' => 'admin',
+            'phone' => '998911157709',
             'dob'=>'2000-10-10',
             'email' => 'admin@gmail.com',
             'password' => \Illuminate\Support\Facades\Hash::make('123456'),
