@@ -94,7 +94,6 @@ Password : 123456
 ```
 
 ## Swagger Usage
-------
 Run this code to generate Swagger
 
 ```bash
