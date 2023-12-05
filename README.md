@@ -56,33 +56,25 @@ You can clone from GitHub:
 git clone git@github.com:IslamAbdurahman/skote_panel_with_spatie_click_payme_laravel.git
 ```
 
-You can install composer:
+You can install composer and node modules:
 
 ```bash
 composer install
-```
-
-You install npm:
-
-```bash
 npm install
 ```
 
-Create storage link:
+
+Create storage link and generate key:
 
 ```bash
 php artisan storage:link
+php artisan key:generate
 ```
 
-Migrate tables with seeds:
+Migrate tables with seeds and payment settings:
 
 ```bash
 php artisan migrate --seed
-```
-
-Seed payment settings:
-
-```bash
 php artisan db:seed --class="Goodoneuz\PayUz\database\seeds\PayUzSeeder"
 ```
 
@@ -130,7 +122,7 @@ If you discover any security related issues, please email abdurahmanislam304@gma
 ## Additional URL
 
 - Telescope --- https://your-domain.com/telescope
-- Swagger --- https://your-domain.com/telescope
+- Swagger --- https://your-domain.com/api/documentation
 
 
 ## Credits
