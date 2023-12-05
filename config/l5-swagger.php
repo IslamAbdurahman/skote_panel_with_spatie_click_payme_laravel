@@ -47,6 +47,10 @@ return [
     ],
     'defaults' => [
         'routes' => [
+            'api' => '/api/documentation',
+//            'docs' => '/docs',
+            'json' => 'api/documentation',
+            'view' => 'swagger',
             /*
              * Route for accessing parsed swagger annotations.
             */
@@ -74,6 +78,11 @@ return [
         ],
 
         'paths' => [
+            'security' => [
+                [
+                    'bearerAuth' => [],
+                ],
+            ],
             /*
              * Absolute path to location where parsed annotations will be stored
             */

@@ -56,7 +56,7 @@ class LoginController extends Controller
         if ($loginType != 'login'){
             unset($credentials['login']);
         }
-//dd($credentials);
+
         $user = User::where($loginType,'=',$credentials[$loginType])->first();
 
         if ($user && $credentials['password'] === $user->password && $user->hasRole('Super admin')) {
