@@ -69,62 +69,55 @@ class UserController extends Controller
      * Login Api.
      */
 
-    public function login(Request $request)
-    {
-        try {
-            $request->validate([
-                'login' => 'required',
-                'password' => 'required',
-            ]);
-
-            $credentials = $request->only('login', 'password');
-
-            if ($request->filled('login')) {
-                if (filter_var($request->login, FILTER_VALIDATE_EMAIL)){
-                    $loginType = 'email';
-                }elseif (filter_var($request->login, FILTER_VALIDATE_INT)){
-                    $loginType = 'phone';
-                }else{
-                    $loginType = 'username';
-                }
-
-                $credentials[$loginType] = $credentials['login'];
-                unset($credentials['login']);
-
-                $user = User::where($loginType, $credentials[$loginType])->first();
-
-                if (!$user) {
-                    return response()->json([
-                        'status' => false,
-                        'data' => new \stdClass(),
-                        'message' => 'Login or password incorrect.',
-                    ], 401);
-                }
-
-                $tokenId = Str::uuid();
-                $token = $user->createToken($tokenId)->plainTextToken;
-                $user->token = $token;
-
-                return response()->json([
-                    'status' => true,
-                    'data' => $user,
-                    'message' => 'Success.'
-                ]);
-            } else {
+public function login(Request $request)
+{
+    try {
+        $request->validate([
+            'login' => 'required',
+            'password' => 'required',
+        ]);
+        $credentials = $request->only('login', 'password');
+        if ($request->filled('login')) {
+            if (filter_var($request->login, FILTER_VALIDATE_EMAIL)){
+                $loginType = 'email';
+            }elseif (filter_var($request->login, FILTER_VALIDATE_INT)){
+                $loginType = 'phone';
+            }else{
+                $loginType = 'username';
+            }
+            $credentials[$loginType] = $credentials['login'];
+            unset($credentials['login']);
+            $user = User::where($loginType, $credentials[$loginType])->first();
+            if (!$user) {
                 return response()->json([
                     'status' => false,
                     'data' => new \stdClass(),
-                    'message' => 'Login field is required.',
-                ], 400);
+                    'message' => 'Login or password incorrect.',
+                ], 401);
             }
-        } catch (\Exception $exception) {
+            $tokenId = Str::uuid();
+            $token = $user->createToken($tokenId)->plainTextToken;
+            $user->token = $token;
+            return response()->json([
+                'status' => true,
+                'data' => $user,
+                'message' => 'Success.'
+            ]);
+        } else {
             return response()->json([
                 'status' => false,
                 'data' => new \stdClass(),
-                'message' => $exception->getMessage(),
-            ]);
+                'message' => 'Login field is required.',
+            ], 400);
         }
+    } catch (\Exception $exception) {
+        return response()->json([
+            'status' => false,
+            'data' => new \stdClass(),
+            'message' => $exception->getMessage(),
+        ]);
     }
+}
 
     /**
      * Display a listing of the resource.
