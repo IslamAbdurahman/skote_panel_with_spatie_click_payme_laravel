@@ -18,6 +18,7 @@ class RoleSeeder extends Seeder
                 'name' => 'Admin',
                 'guard_name' => 'web',
             ],
+
             // Add more records as needed
         ]);
     }
