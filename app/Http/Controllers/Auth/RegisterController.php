@@ -77,12 +77,14 @@ class RegisterController extends Controller
             $avatarPath = Storage::path('public/images/');
             $avatar->move($avatarPath, $avatarName);
             $avatarName = '/storage/images/' . $avatarName;
+        }else{
+            $avatarName = '/storage/images/avatar.jpg';
         }
 
         return User::create([
             'name' => $data['name'],
             'username' => $data['username'],
-            'phone' => $data['username'],
+            'phone' => preg_replace("/[^0-9]/", "", $data['phone']),
 //            'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'dob' => date('Y-m-d', strtotime($data['dob'])),

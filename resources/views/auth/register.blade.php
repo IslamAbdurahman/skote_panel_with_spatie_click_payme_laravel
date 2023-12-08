@@ -144,7 +144,7 @@
                                                     <label for="phone" class="form-label">Phone</label>
                                                     <input type="text" class="form-control input-mask @error('phone') is-invalid @enderror"
                                                            value="{{ old('phone') }}" id="phone" name="phone" autofocus required
-                                                           data-inputmask="'mask': '99-9999999'"
+                                                           data-inputmask="'mask': '999-99-999-99-99'"
                                                            placeholder="Enter phone">
                                                     @error('phone')
                                                     <span class="invalid-feedback" role="alert">

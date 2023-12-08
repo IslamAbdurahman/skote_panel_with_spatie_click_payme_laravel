@@ -58,6 +58,8 @@ class HomeController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string'],
+            'phone' => ['required'],
             'email' => ['required', 'string', 'email'],
             'dob' => ['required'],
             'avatar' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:1024'],
@@ -67,6 +69,8 @@ class HomeController extends Controller
         $user->name = $request->get('name');
         $user->dob = date("Y-m-d", strtotime($request->get('dob')));
         $user->email = $request->get('email');
+        $user->username = $request->get('username');
+        $user->phone = preg_replace("/[^0-9]/", "", $request->get('phone'));
 
         if ($request->file('avatar')) {
             $avatar = $request->file('avatar');
