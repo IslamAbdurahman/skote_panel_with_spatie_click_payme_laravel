@@ -174,4 +174,25 @@ return [
     "Edit_Details" => "Ma'lumotlarni Tahrirlash",
     "Placeholders" => "O'rnatgichlar",
     "Toasts" => "Tostlar",
+
+
+    // Users
+
+    'users' => 'Foydalanuvchilar',
+    'image' => 'Rasm',
+    'name' => 'Ism',
+    'username' => 'Foydalanuvchi',
+    'email' => 'Email',
+    'phone' => 'Telefon',
+    'birthday' => 'Tug`ilgan sana',
+    'role' => 'Role',
+    'password' => 'Parol',
+    'select_permission' => 'Ruxsatlarni tanlash',
+    'Y_m_d' => 'Yil-oy-kun',
+
+    'close' => 'Yopish',
+    'save' => 'Saqlash',
+    'delete' => 'O`chirish',
+    'delete_message' => 'Ishonchingiz komilmi?',
+
 ];

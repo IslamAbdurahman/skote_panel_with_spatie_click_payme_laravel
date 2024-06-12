@@ -55,17 +55,16 @@
 
                         <tr>
                             <th scope="col">N</th>
-                            <th scope="col">@lang('translation.rasm')</th>
-                            <th scope="col">@lang('translation.fish')</th>
+                            <th scope="col">@lang('translation.image')</th>
+                            <th scope="col">@lang('translation.name')</th>
                             <th scope="col">@lang('translation.username')</th>
-                            <th scope="col">@lang('translation.region')</th>
                             <th scope="col">@lang('translation.email')</th>
                             <th scope="col">@lang('translation.phone')</th>
                             <th scope="col">@lang('translation.birthday')</th>
                             <th>
                                 <button type="button" class="btn btn-success rounded-3 btn-sm waves-effect waves-light"
                                         data-bs-toggle="modal" data-bs-target="#exampleModalScrollable"><i
-                                        class="fas fa-plus-circle"></i></button>
+                                            class="fas fa-plus-circle"></i></button>
 
                                 <form action="{{ route('user.store') }}" method="post"
                                       class="needs-validation" novalidate
@@ -88,10 +87,10 @@
                                                             <div class="col-6 mt-2">
                                                                 <div>
                                                                     <label
-                                                                        class="form-label">@lang('translation.fish')</label>
+                                                                            class="form-label">@lang('translation.name')</label>
                                                                     <input type="text" name="name"
                                                                            class="form-control fw-bold "
-                                                                           placeholder="@lang('translation.fish')"
+                                                                           placeholder="@lang('translation.name')"
                                                                            required>
                                                                     <div class="valid-feedback">
                                                                         @lang('translation.valid_feedback')
@@ -103,7 +102,7 @@
                                                             </div>
                                                             <div class="col-6 mt-2">
                                                                 <label
-                                                                    class="form-label">@lang('translation.phone')</label>
+                                                                        class="form-label">@lang('translation.phone')</label>
                                                                 <input type="text" name="phone"
                                                                        class="form-control fw-bold datepicker input-mask"
                                                                        data-inputmask="'mask': '999-99-999-99-99'"
@@ -118,58 +117,9 @@
                                                                 </div>
                                                             </div>
 
-
-                                                            <div class="row">
-                                                                <div class="col-6">
-                                                                    <label class="form-label" for="regionCreate">
-                                                                        @lang('translation.region')
-                                                                    </label>
-                                                                    <select class="form-control" name="region"
-                                                                            id="regionCreate"
-                                                                            required
-                                                                            onchange="updateDistricts('regionCreate','districtCreate',0)">
-                                                                        <option
-                                                                            value="" disabled
-                                                                            selected>@lang('translation.select')</option>
-                                                                        @foreach($regions as $region)
-                                                                            <option
-                                                                                value="{{ $region->id }}">{{ $region->name }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                    <div class="valid-feedback">
-                                                                        @lang('translation.valid_feedback')
-                                                                    </div>
-                                                                    <div class="invalid-feedback">
-                                                                        @lang('translation.invalid_feedback')
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <label class="form-label"
-                                                                           for="districtCreate">
-                                                                        @lang('translation.district')
-                                                                    </label>
-                                                                    <select class="form-control"
-                                                                            id="districtCreate"
-                                                                            name="district_id"
-                                                                            required>
-                                                                        <option value="" selected
-                                                                                disabled>@lang('translation.select')</option>
-                                                                    </select>
-                                                                    <div class="valid-feedback">
-                                                                        @lang('translation.valid_feedback')
-                                                                    </div>
-                                                                    <div class="invalid-feedback">
-                                                                        @lang('translation.invalid_feedback')
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-
-
                                                             <div class="col-4 mt-2">
                                                                 <label
-                                                                    class="form-label">@lang('translation.username')</label>
+                                                                        class="form-label">@lang('translation.username')</label>
                                                                 <input type="text" name="username"
                                                                        class="form-control fw-bold "
                                                                        placeholder="@lang('translation.username')"
@@ -187,7 +137,7 @@
                                                                 <select name="role" id="role" class="form-select">
                                                                     @foreach($roles as $role)
                                                                         <option
-                                                                            value="{{ $role->name }}">{{ $role->name }}</option>
+                                                                                value="{{ $role->name }}">{{ $role->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 <div class="valid-feedback">
@@ -203,15 +153,13 @@
                                                                     <input type="text" name="dob"
                                                                            class="datepicker input-mask"
                                                                            data-inputmask="'mask': '99-99-9999'"
-                                                                           placeholder="@lang('translation.d_m_Y')"
+                                                                           placeholder="@lang('translation.Y_m_d')"
                                                                            data-date-format="dd-mm-yyyy"
                                                                            data-date-container='#datepicker2'
                                                                            data-provide="datepicker"
                                                                            data-date-autoclose="true"
                                                                            style="width: 100%; border: 1px solid black"
                                                                            required>
-                                                                    {{--                                                                    <span class="input-group-text"><i--}}
-                                                                    {{--                                                                            class="mdi mdi-calendar"></i></span>--}}
                                                                     <div class="valid-feedback">
                                                                         @lang('translation.valid_feedback')
                                                                     </div>
@@ -221,12 +169,12 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-6 mt-2"><label
-                                                                    class="form-label">@lang('translation.email')</label>
+                                                                        class="form-label">@lang('translation.email')</label>
                                                                 <input type="text" name="email"
                                                                        class="form-control fw-bold "
                                                                        placeholder="@lang('translation.email')"></div>
                                                             <div class="col-6 mt-2"><label
-                                                                    class="form-label">@lang('translation.password')</label>
+                                                                        class="form-label">@lang('translation.password')</label>
                                                                 <input type="text" name="password"
                                                                        class="form-control fw-bold "
                                                                        placeholder="@lang('translation.password')"
@@ -242,7 +190,7 @@
                                                         <div class="row">
                                                             <div>
                                                                 <label
-                                                                    class="form-label">@lang('translation.rasm')</label>
+                                                                        class="form-label">@lang('translation.image')</label>
                                                                 <input type="file" name="avatar"
                                                                        class="form-control fw-bold ">
                                                             </div>
@@ -271,8 +219,8 @@
                                                                                                value="{{ $permisson->name }}"
                                                                                                id="permission{{ $permisson->id }}">
                                                                                         <label
-                                                                                            class="  form-check-label"
-                                                                                            for="permission{{ $permisson->id }}">
+                                                                                                class="  form-check-label"
+                                                                                                for="permission{{ $permisson->id }}">
                                                                                             {{ $permisson->name }}<p>
                                                                                         </label>
                                                                                     </div>
@@ -333,7 +281,6 @@
                                     </p>
                                 </td>
                                 <td>{{$user->username}}</td>
-                                <td>{{ $user->district ? ($user->district->region->name ?? '') . ' / ' . $user->district->name : '' }}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->phone}}</td>
                                 <td>{{$user->dob}}</td>
@@ -367,7 +314,7 @@
                                                             <div class="row">
                                                                 <div class="col-6 mt-2">
                                                                     <label
-                                                                        class="form-label">@lang('translation.fish')</label>
+                                                                            class="form-label">@lang('translation.name')</label>
                                                                     <input type="text" name="name"
                                                                            class="form-control fw-bold " required
                                                                            value={{$user->name}}>
@@ -380,7 +327,7 @@
                                                                 </div>
                                                                 <div class="col-6 mt-2">
                                                                     <label
-                                                                        class="form-label">@lang('translation.phone')</label>
+                                                                            class="form-label">@lang('translation.phone')</label>
                                                                     <input type="text" name="phone"
                                                                            class="form-control fw-bold " required
                                                                            value={{$user->phone}}>
@@ -394,55 +341,9 @@
 
                                                                 </div>
 
-
-                                                                <div class="col-6">
-                                                                    <label class="form-label" for="regionCreate">
-                                                                        @lang('translation.region')
-                                                                    </label>
-                                                                    <select class="form-control" name="region"
-                                                                            id="regionCreate-{{ $user->id }}"
-                                                                            required
-                                                                            onchange="updateDistricts('regionCreate-{{ $user->id }}','districtCreate-{{ $user->id }}',{{ $user->district_id }})">
-                                                                        <option
-                                                                            value="" disabled
-                                                                            selected>@lang('translation.select')</option>
-                                                                        @foreach($regions as $region)
-                                                                            <option
-                                                                                {{ $region->id == $user->district->region_id ? 'selected':'' }}
-                                                                                value="{{ $region->id }}">{{ $region->name }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                    <div class="valid-feedback">
-                                                                        @lang('translation.valid_feedback')
-                                                                    </div>
-                                                                    <div class="invalid-feedback">
-                                                                        @lang('translation.invalid_feedback')
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <label class="form-label"
-                                                                           for="districtCreate-{{ $user->id }}">
-                                                                        @lang('translation.district')
-                                                                    </label>
-                                                                    <select class="form-control"
-                                                                            id="districtCreate-{{ $user->id }}"
-                                                                            name="district_id"
-                                                                            required>
-                                                                        <option value="" selected
-                                                                                disabled>@lang('translation.select')</option>
-                                                                    </select>
-                                                                    <div class="valid-feedback">
-                                                                        @lang('translation.valid_feedback')
-                                                                    </div>
-                                                                    <div class="invalid-feedback">
-                                                                        @lang('translation.invalid_feedback')
-                                                                    </div>
-                                                                </div>
-
-
                                                                 <div class="col-4 mt-2">
                                                                     <label
-                                                                        class="form-label">@lang('translation.username')</label>
+                                                                            class="form-label">@lang('translation.username')</label>
                                                                     <input type="text" name="username"
                                                                            class="form-control fw-bold " required
                                                                            value={{$user->username}}>
@@ -461,8 +362,8 @@
                                                                             required>
                                                                         @foreach($roles as $role)
                                                                             <option
-                                                                                {{ $user->roles->contains('id', $role->id) ? 'selected' : '' }}
-                                                                                value="{{ $role->name }}">{{ $role->name }}</option>
+                                                                                    {{ $user->roles->contains('id', $role->id) ? 'selected' : '' }}
+                                                                                    value="{{ $role->name }}">{{ $role->name }}</option>
                                                                         @endforeach
                                                                     </select>
 
@@ -478,7 +379,7 @@
                                                                     <div class="input-group"
                                                                          id="datepickerUser{{ $user->id }}">
                                                                         <input type="text" name="dob"
-                                                                               value="{{ date('d-m-Y', strtotime($user->dob)) }}"
+                                                                               value="{{$user->dob ?? '' }}"
                                                                                class="datepicker input-mask"
                                                                                data-inputmask="'mask': '99-99-9999'"
                                                                                placeholder="@lang('translation.d_m_Y')"
@@ -498,14 +399,14 @@
                                                                 </div>
                                                                 <div class="col-6 mt-2">
                                                                     <label
-                                                                        class="form-label">@lang('translation.email')</label>
+                                                                            class="form-label">@lang('translation.email')</label>
                                                                     <input type="text" name="email"
                                                                            class="form-control fw-bold "
                                                                            value={{$user->email}}>
                                                                 </div>
                                                                 <div class="col-6 mt-2">
                                                                     <label
-                                                                        class="form-label">@lang('translation.password')</label>
+                                                                            class="form-label">@lang('translation.password')</label>
                                                                     <input type="text" name="password"
                                                                            class="form-control fw-bold "
                                                                            placeholder="password">
@@ -513,7 +414,7 @@
                                                                 </div>
                                                                 <div>
                                                                     <label
-                                                                        class="form-label">@lang('translation.rasm')</label>
+                                                                            class="form-label">@lang('translation.image')</label>
                                                                     <input type="file" name="avatar"
                                                                            class="form-control fw-bold " value="1122">
                                                                 </div>
@@ -541,15 +442,15 @@
                                                                                     @foreach($permissions as $permission)
                                                                                         <div class="col-4 mt-2">
                                                                                             <input
-                                                                                                class="form-check-input"
-                                                                                                type="checkbox"
-                                                                                                {{ $user->permissions->contains('id', $permission->id) ? 'checked' : '' }}
-                                                                                                name="permissions[]"
-                                                                                                value="{{ $permission->name }}"
-                                                                                                id="permissionUpdate{{ $user->id }}{{ $permission->id }}">
+                                                                                                    class="form-check-input"
+                                                                                                    type="checkbox"
+                                                                                                    {{ $user->permissions->contains('id', $permission->id) ? 'checked' : '' }}
+                                                                                                    name="permissions[]"
+                                                                                                    value="{{ $permission->name }}"
+                                                                                                    id="permissionUpdate{{ $user->id }}{{ $permission->id }}">
                                                                                             <label
-                                                                                                class="form-check-label"
-                                                                                                for="permissionUpdate{{ $user->id}}{{ $permission->id }}">
+                                                                                                    class="form-check-label"
+                                                                                                    for="permissionUpdate{{ $user->id}}{{ $permission->id }}">
                                                                                                 {{ $permission->name }}
                                                                                             </label>
                                                                                         </div>
@@ -649,51 +550,5 @@
     <script src="{{ URL::asset('/assets/libs/inputmask/inputmask.min.js') }}"></script>
     <!-- form mask init -->
     <script src="{{ URL::asset('/assets/js/pages/form-mask.init.js') }}"></script>
-
-
-    <script>
-
-        // Your regions data
-        let regions = {!! json_encode($regions, JSON_HEX_TAG) !!};
-
-        function updateDistricts(regionCreate, districtCreate, district_id) {
-            var regionSelect = document.getElementById(regionCreate);
-            var districtSelect = document.getElementById(districtCreate);
-            var selectedRegionId = regionSelect.value;
-
-            // Clear existing options in the district dropdown
-            districtSelect.innerHTML = '<option value="">@lang('translation.select')</option>';
-
-            // Find the selected region in the 'regions' array
-            var selectedRegion = regions.find(region => region.id == selectedRegionId);
-
-            // Populate district options based on the selected region
-            if (selectedRegion) {
-                selectedRegion.districts.forEach(district => {
-                    var option = document.createElement('option');
-                    option.value = district.id;
-                    if (district.id == district_id) {
-                        option.selected = true;
-                    }
-                    option.textContent = district.name;
-                    districtSelect.appendChild(option);
-                });
-            }
-        }
-
-    </script>
-
-
-    @foreach($users as $user)
-        <script>
-            $(document).ready(function () {
-                $('.select2-{{ $user->id }}').select2({
-                    dropdownParent: $('.modal{{ $user->id }}')
-                });
-            });
-
-            updateDistricts('regionCreate-{{ $user->id }}', 'districtCreate-{{ $user->id }}', {{ $user->district_id }})
-        </script>
-    @endforeach
 
 @endsection

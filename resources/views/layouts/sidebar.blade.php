@@ -10,6 +10,13 @@
                 <li class="menu-title" key="t-menu">@lang('translation.Menu')</li>
 
                 <li>
+                    <a href="{{ route('user_profile.index') }}" class="waves-effect">
+                        <i class="bx bx-user"></i>
+                        <span key="t-users">@lang('translation.users')</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="bx bx-home-circle"></i><span class="badge rounded-pill bg-info float-end">04</span>
                         <span key="t-dashboards">@lang('translation.Dashboards')</span>
