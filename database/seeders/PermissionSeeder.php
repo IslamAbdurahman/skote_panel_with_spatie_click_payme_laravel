@@ -13,8 +13,8 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        Permission::create([
-
-        ]);
+//        Permission::create([
+//
+//        ]);
     }
 }

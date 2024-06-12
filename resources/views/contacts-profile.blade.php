@@ -40,8 +40,9 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="avatar-md profile-user-wid mb-4">
-                                <img src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg') }}"
-                                     alt="" class="img-thumbnail rounded-circle">
+                                <img
+                                    src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg') }}"
+                                    alt="" class="img-thumbnail rounded-circle">
                             </div>
                             <h5 class="font-size-15 text-truncate">{{ Auth::user()->name }}</h5>
                             <p class="text-muted mb-0 text-truncate">UI/UX Designer</p>
@@ -62,7 +63,7 @@
                                 </div>
                                 <div class="mt-4">
                                     <a href="" class="btn btn-primary waves-effect waves-light btn-sm">View Profile <i
-                                                class="mdi mdi-arrow-right ms-1"></i></a>
+                                            class="mdi mdi-arrow-right ms-1"></i></a>
 
                                     <a href="" class="btn btn-primary waves-effect waves-light btn-sm"
                                        data-bs-toggle="modal" data-bs-target=".update-profile">Edit Profile</a>
@@ -367,7 +368,7 @@
                                 <input type="text" class="form-control @error('dob') is-invalid @enderror"
                                        placeholder="dd-mm-yyyy" data-date-format="dd-mm-yyyy"
                                        data-date-container='#datepicker1' data-date-end-date="0d"
-                                       value="{{ date('d-m-Y', strtotime(Auth::user()->dob)) }}"
+                                       value="{{ Auth::user()->dob ? date('d-m-Y', strtotime(Auth::user()->dob)) : '' }}"
                                        data-provide="datepicker" name="dob" autofocus id="dob">
                                 <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                             </div>
@@ -424,31 +425,31 @@
             $('#avatarError').text('');
             $.ajax({
                 url: "{{ url('update-profile') }}" + "/" + Id,
-            type: "POST",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                $('#emailError').text('');
-                $('#nameError').text('');
-                $('#dobError').text('');
-                $('#avatarError').text('');
-                if (response.isSuccess == false) {
-                    alert(response.Message);
-                } else if (response.isSuccess == true) {
-                    setTimeout(function() {
-                        window.location.reload();
-                    }, 1000);
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $('#emailError').text('');
+                    $('#nameError').text('');
+                    $('#dobError').text('');
+                    $('#avatarError').text('');
+                    if (response.isSuccess == false) {
+                        alert(response.Message);
+                    } else if (response.isSuccess == true) {
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1000);
+                    }
+                },
+                error: function (response) {
+                    $('#emailError').text(response.responseJSON.errors.email);
+                    $('#nameError').text(response.responseJSON.errors.name);
+                    $('#dobError').text(response.responseJSON.errors.dob);
+                    $('#avatarError').text(response.responseJSON.errors.avatar);
                 }
-            },
-            error: function(response) {
-                $('#emailError').text(response.responseJSON.errors.email);
-                $('#nameError').text(response.responseJSON.errors.name);
-                $('#dobError').text(response.responseJSON.errors.dob);
-                $('#avatarError').text(response.responseJSON.errors.avatar);
-            }
+            });
         });
-    });
-</script>
+    </script>
 
 @endsection

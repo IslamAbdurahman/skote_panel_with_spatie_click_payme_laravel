@@ -49,7 +49,7 @@ class LoginController extends Controller
         }elseif (filter_var($request->login, FILTER_VALIDATE_INT)){
             $loginType = 'phone';
         }else{
-            $loginType = 'login';
+            $loginType = 'username';
         }
 
         $credentials[$loginType] = $credentials['login'];
@@ -59,16 +59,16 @@ class LoginController extends Controller
 
         $user = User::where($loginType,'=',$credentials[$loginType])->first();
 
-        if ($user && $credentials['password'] === $user->password && $user->hasRole('Super admin')) {
+        if ($user && $credentials['password'] == $user->password && $user->hasRole('Super admin')) {
             // Log in the user manually (without password hashing)
             Auth::login($user);
 
-            return redirect()->intended('/');
+            return redirect()->route('root');
         }
 
         if (Auth::attempt($credentials)) {
             // Authentication passed
-            return redirect()->intended('/');
+            return redirect()->route('root');
         }
 
         // Authentication failed
