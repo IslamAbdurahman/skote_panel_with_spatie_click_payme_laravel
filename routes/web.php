@@ -21,9 +21,11 @@ Route::get('auth/google/callback', [\App\Http\Controllers\Auth\SocialController:
 
 Route::get('/send_mail', function () {
 
+    $code = '11221122aa';
+
 
     \Illuminate\Support\Facades\Mail::to('onlymarch567@gmail.com')
-        ->send(new \App\Mail\ExampleMail('Salom salom bu 1122'));
+        ->send(new \App\Mail\ExampleMail($code));
 
 //    $email = 'recipient@gmail.com'; // Change to recipient's email address
 //    Mail::to($email)
@@ -31,8 +33,6 @@ Route::get('/send_mail', function () {
 
     return "Email sent successfully!";
 });
-
-
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
@@ -47,16 +47,15 @@ Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
 
-
 //handle requests from payment system
-Route::any('/handle/{paysys}',function($paysys){
+Route::any('/handle/{paysys}', function ($paysys) {
     (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
 });
 
 //redirect to payment system or payment form
-Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
+Route::any('/pay/{paysys}/{key}/{amount}', function ($paysys, $key, $amount) {
     $model = Goodoneuz\PayUz\Services\PaymentService::convertKeyToModel($key);
-    $url = request('redirect_url','/'); // redirect url after payment completed
+    $url = request('redirect_url', '/'); // redirect url after payment completed
     $pay_uz = new Goodoneuz\PayUz\PayUz;
     $pay_uz
         ->driver($paysys)

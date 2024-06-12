@@ -30,7 +30,8 @@ class ExampleMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.gmail_message')
-            ->subject($this->mesaage);
+        $otp_code = $this->mesaage;
+        return $this->view('mails.gmail_message', compact('otp_code'))
+            ->subject('Site OTP message.');
     }
 }
