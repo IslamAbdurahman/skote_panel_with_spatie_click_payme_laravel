@@ -17,6 +17,15 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 <a href="https://payme.uz/@longevity" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
 
+## Featured Authentication
+
+- [Google](http://google.com) - Auth
+- [Facebook](http://facebook.com) - Auth remaining
+- [Github](http://github.com) - Auth  remaining 
+- [Gitlab](http://gitlab.com) - Auth remaining
+- [Linkedin](http://linkedin.com) - Auth remaining
+- [Apple](http://apple.com) - Auth remaining
+
 ## Featured Payments
 
 - [Payme](http://payme.uz) - Merchant

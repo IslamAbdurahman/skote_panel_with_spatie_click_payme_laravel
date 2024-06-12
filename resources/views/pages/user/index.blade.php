@@ -23,10 +23,10 @@
 
     @component('components.breadcrumb')
         @slot('li_1')
-            @lang('translation.murojaat')
+            @lang('translation.users')
         @endslot
         @slot('title')
-            @lang('translation.murojaat')
+            @lang('translation.users')
         @endslot
     @endcomponent
 
