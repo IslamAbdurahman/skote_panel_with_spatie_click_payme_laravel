@@ -20,21 +20,24 @@ class UserController extends Controller
     public function index(Request $request)
     {
 
-        if ($request->search){
-            $users = User::where(function ($query) use ($request) {
-                $query->where('name', 'like', '%'.$request->search.'%')
-                    ->orWhere('username', 'like', '%'.$request->search.'%')
-                    ->orWhere('phone', 'like', '%'.$request->search.'%');
-            })
-                ->get();
-        }else{
-            $users = User::all();
+        $users = User::whereNotIn('id', [auth()->id()]);
+
+        if ($request->search) {
+            $users->where(function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->search . '%')
+                    ->orWhere('username', 'like', '%' . $request->search . '%')
+                    ->orWhere('phone', 'like', '%' . $request->search . '%');
+            });
+        } else {
+            $users = User::whereNotIn('id', [auth()->id()]);
         }
+
+        $users = $users->get();
 
         $roles = Role::all();
 
         $permissions = Permission::all();
-        return  view('pages.user.index' , compact([
+        return view('pages.user.index', compact([
             'users',
             'roles',
             'permissions'
@@ -72,7 +75,7 @@ class UserController extends Controller
                 'phone' => preg_replace("/[^0-9]/", "", $request->get('phone')),
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'dob' => date('Y-m-d',strtotime($request->dob)),
+                'dob' => date('Y-m-d', strtotime($request->dob)),
                 'avatar' => $filename
             ]);
 
@@ -83,11 +86,11 @@ class UserController extends Controller
             DB::commit();
 
             return redirect()->back()->with([
-                'success'=>'Ma`lumot yaratildi.'
+                'success' => 'Ma`lumot yaratildi.'
             ]);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return redirect()->back()->with([
-                'error'=>$exception->getMessage()
+                'error' => $exception->getMessage()
             ]);
         }
     }
@@ -129,19 +132,19 @@ class UserController extends Controller
                 $user->avatar = $filename;
             }
 
-            $user->name=$request->name;
-            $user->username=$request->username;
-            if ($request->district_id){
-                $user->district_id=$request->district_id;
+            $user->name = $request->name;
+            $user->username = $request->username;
+            if ($request->district_id) {
+                $user->district_id = $request->district_id;
             }
-            $user->phone=preg_replace("/[^0-9]/", "", $request->get('phone'));
-            if ($request->email){
-                $user->email=$request->email;
+            $user->phone = preg_replace("/[^0-9]/", "", $request->get('phone'));
+            if ($request->email) {
+                $user->email = $request->email;
             }
             if ($request->has('password')) {
                 $user->password = Hash::make($request->password);
             }
-            $user->dob=date('Y-m-d',strtotime($request->dob));
+            $user->dob = date('Y-m-d', strtotime($request->dob));
 
             $user->syncRoles([$request->role]);
 
@@ -149,11 +152,11 @@ class UserController extends Controller
 
             $user->update();
             return redirect()->back()->with([
-                'success'=>'Ma`lumot tahrirlandi.'
+                'success' => 'Ma`lumot tahrirlandi.'
             ]);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return redirect()->back()->with([
-                'error'=>$exception->getMessage()
+                'error' => $exception->getMessage()
             ]);
         }
     }
@@ -164,9 +167,9 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         try {
-            if(!auth()->user()->hasPermissionTo('Фойдаланувчилар')){
+            if (!auth()->user()->hasPermissionTo('Фойдаланувчилар')) {
                 return redirect()->back()->with([
-                    'error'=>'Sizga ruhsat yo`q.'
+                    'error' => 'Sizga ruhsat yo`q.'
                 ]);
             }
 
@@ -178,9 +181,9 @@ class UserController extends Controller
                 unlink($oldAvatarPath);
             }
             return redirect()->back()->with([
-                'success'=>'Ma`lumot o`chirildi.'
+                'success' => 'Ma`lumot o`chirildi.'
             ]);
-        }catch (QueryException $exception) {
+        } catch (QueryException $exception) {
             if ($exception->errorInfo[1] === 1451) {
                 return redirect()->back()->with('error', 'Foydalanuvchi murojaatlarga bog`langan.');
             } else {
