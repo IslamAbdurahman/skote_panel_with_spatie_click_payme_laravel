@@ -21,8 +21,9 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 - [Google](http://google.com) - Auth
 - [Facebook](http://facebook.com) - Auth remaining
-- [Github](http://github.com) - Auth  remaining 
+- [Github](http://github.com) - Auth  remaining
 - [Gitlab](http://gitlab.com) - Auth remaining
+- [Twitter](http://twitter.com) - Auth remaining
 - [Linkedin](http://linkedin.com) - Auth remaining
 - [Apple](http://apple.com) - Auth remaining
 
