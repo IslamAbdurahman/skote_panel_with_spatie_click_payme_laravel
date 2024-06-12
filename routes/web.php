@@ -19,6 +19,20 @@ Auth::routes();
 Route::get('auth/google', [\App\Http\Controllers\Auth\SocialController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [\App\Http\Controllers\Auth\SocialController::class, 'handleGoogleCallback'])->name('auth.google.callback');
 
+Route::get('/send_mail', function () {
+
+
+    \Illuminate\Support\Facades\Mail::to('onlymarch567@gmail.com')
+        ->send(new \App\Mail\ExampleMail('Salom salom bu 1122'));
+
+//    $email = 'recipient@gmail.com'; // Change to recipient's email address
+//    Mail::to($email)
+//      ->send(new ExampleMail());
+
+    return "Email sent successfully!";
+});
+
+
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
