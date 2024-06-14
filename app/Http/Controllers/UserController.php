@@ -28,8 +28,6 @@ class UserController extends Controller
                     ->orWhere('username', 'like', '%' . $request->search . '%')
                     ->orWhere('phone', 'like', '%' . $request->search . '%');
             });
-        } else {
-            $users = User::whereNotIn('id', [auth()->id()]);
         }
 
         $users = $users->get();
