@@ -37,7 +37,7 @@ Route::get('/send_mail', function () {
 
 
 
-Route::resource('user_profile',\App\Http\Controllers\UserController::class);
+Route::resource('user',\App\Http\Controllers\UserController::class);
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');

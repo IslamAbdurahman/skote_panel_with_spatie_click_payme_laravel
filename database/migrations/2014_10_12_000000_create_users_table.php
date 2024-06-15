@@ -5,8 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -16,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('username')->unique()->nullable();
-            $table->string('phone')->unique()->nullable();
+            $table->integer('phone')->unique()->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
@@ -30,12 +29,12 @@ return new class extends Migration
             'name' => 'admin',
             'username' => 'admin',
             'phone' => '998911157709',
-            'dob'=>'2000-10-10',
+            'dob' => '2000-10-10',
             'email' => 'admin@gmail.com',
             'password' => \Illuminate\Support\Facades\Hash::make('123456'),
-            'email_verified_at'=>'2022-01-02 17:04:58',
-            'avatar' => 'images/avatar-1.jpg','created_at' => now(),
-            ]);
+            'email_verified_at' => '2022-01-02 17:04:58',
+            'avatar' => 'images/avatar-1.jpg', 'created_at' => now(),
+        ]);
     }
 
     /**

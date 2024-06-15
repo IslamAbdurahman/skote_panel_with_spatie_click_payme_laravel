@@ -112,7 +112,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
         try {
 
@@ -132,27 +132,28 @@ class UserController extends Controller
 
             $user->name = $request->name;
             $user->username = $request->username;
-            if ($request->district_id) {
-                $user->district_id = $request->district_id;
-            }
-            $user->phone = preg_replace("/[^0-9]/", "", $request->get('phone'));
-            if ($request->email) {
-                $user->email = $request->email;
-            }
+
+            $user->phone = preg_replace("/[^0-9]/", "", $request->get('phone')) != "" ? preg_replace("/[^0-9]/", "", $request->get('phone')) : null;
+
+            $user->email = $request->email;
+
             if ($request->has('password')) {
                 $user->password = Hash::make($request->password);
             }
-            $user->dob = date('Y-m-d', strtotime($request->dob));
+
+            $user->dob = strtotime($request->dob) ? date('Y-m-d', strtotime($request->dob)) : null;
 
             $user->syncRoles([$request->role]);
 
             $user->syncPermissions([$request->permissions]);
 
             $user->update();
+
             return redirect()->back()->with([
                 'success' => 'Ma`lumot tahrirlandi.'
             ]);
         } catch (\Exception $exception) {
+            dd($exception->getMessage());
             return redirect()->back()->with([
                 'error' => $exception->getMessage()
             ]);

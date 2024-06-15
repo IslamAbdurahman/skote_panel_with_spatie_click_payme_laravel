@@ -59,6 +59,7 @@
                             <th scope="col">@lang('translation.name')</th>
                             <th scope="col">@lang('translation.username')</th>
                             <th scope="col">@lang('translation.email')</th>
+                            <th scope="col">@lang('translation.password')</th>
                             <th scope="col">@lang('translation.phone')</th>
                             <th scope="col">@lang('translation.birthday')</th>
                             <th>
@@ -152,9 +153,9 @@
                                                                 <div class="input-group" id="datepicker2">
                                                                     <input type="text" name="dob"
                                                                            class="datepicker input-mask"
-                                                                           data-inputmask="'mask': '99-99-9999'"
+                                                                           data-inputmask="'mask': '9999-99-99'"
                                                                            placeholder="@lang('translation.Y_m_d')"
-                                                                           data-date-format="dd-mm-yyyy"
+                                                                           data-date-format="yyyy-mm-dd"
                                                                            data-date-container='#datepicker2'
                                                                            data-provide="datepicker"
                                                                            data-date-autoclose="true"
@@ -282,6 +283,7 @@
                                 </td>
                                 <td>{{$user->username}}</td>
                                 <td>{{$user->email}}</td>
+                                <td>{{$user->password ? '********' : ''}}</td>
                                 <td>{{$user->phone}}</td>
                                 <td>{{$user->dob}}</td>
 
@@ -329,7 +331,7 @@
                                                                     <label
                                                                             class="form-label">@lang('translation.phone')</label>
                                                                     <input type="text" name="phone"
-                                                                           class="form-control fw-bold " required
+                                                                           class="form-control fw-bold "
                                                                            value={{$user->phone}}>
 
                                                                     <div class="valid-feedback">
@@ -345,7 +347,7 @@
                                                                     <label
                                                                             class="form-label">@lang('translation.username')</label>
                                                                     <input type="text" name="username"
-                                                                           class="form-control fw-bold " required
+                                                                           class="form-control fw-bold "
                                                                            value={{$user->username}}>
 
                                                                     <div class="valid-feedback">
@@ -381,14 +383,14 @@
                                                                         <input type="text" name="dob"
                                                                                value="{{$user->dob ?? '' }}"
                                                                                class="datepicker input-mask"
-                                                                               data-inputmask="'mask': '99-99-9999'"
-                                                                               placeholder="@lang('translation.d_m_Y')"
-                                                                               data-date-format="dd-mm-yyyy"
+                                                                               data-inputmask="'mask': '9999-99-99'"
+                                                                               placeholder="@lang('translation.Y_m_d')"
+                                                                               data-date-format="yyyy-mm-dd"
                                                                                data-date-container='#datepickerUser{{ $user->id }}'
                                                                                data-provide="datepicker"
                                                                                data-date-autoclose="true"
                                                                                style="width: 100%; border: 1px solid black"
-                                                                               required>
+                                                                        >
                                                                         <div class="valid-feedback">
                                                                             @lang('translation.valid_feedback')
                                                                         </div>

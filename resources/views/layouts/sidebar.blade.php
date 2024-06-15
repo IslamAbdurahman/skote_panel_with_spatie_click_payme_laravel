@@ -10,7 +10,7 @@
                 <li class="menu-title" key="t-menu">@lang('translation.Menu')</li>
 
                 <li>
-                    <a href="{{ route('user_profile.index') }}" class="waves-effect">
+                    <a href="{{ route('user.index') }}" class="waves-effect">
                         <i class="bx bx-user"></i>
                         <span key="t-users">@lang('translation.users')</span>
                     </a>
