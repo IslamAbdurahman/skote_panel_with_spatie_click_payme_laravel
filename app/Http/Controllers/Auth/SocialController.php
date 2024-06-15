@@ -52,4 +52,49 @@ class SocialController extends Controller
 
         return redirect()->route('root');
     }
+
+
+    /**
+     * Redirect the user to the Google authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Obtain the user information from Google.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleFacebookCallback()
+    {
+        try {
+            $user = Socialite::driver('facebook')->stateless()->user();
+        } catch (\Exception $e) {
+            return redirect()->route('login');
+        }
+
+        // Check if the user already exists
+        $existingUser = User::where('email', $user->getEmail())->first();
+
+        if ($existingUser) {
+            // Log the user in
+            Auth::login($existingUser, true);
+        } else {
+            // Create a new user
+            $newUser = new User();
+            $newUser->name = $user->getName();
+            $newUser->email = $user->getEmail();
+            $newUser->facebook_id = $user->getId();
+            $newUser->avatar = $user->getAvatar();
+            $newUser->save();
+
+            Auth::login($newUser, true);
+        }
+
+        return redirect()->route('root');
+    }
 }

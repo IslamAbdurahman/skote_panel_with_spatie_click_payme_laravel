@@ -170,7 +170,7 @@
 
                                                     <ul class="list-inline">
                                                         <li class="list-inline-item">
-                                                            <a href="#"
+                                                            <a href="{{ route('auth.facebook') }}"
                                                                class="social-list-item bg-primary text-white border-primary">
                                                                 <i class="mdi mdi-facebook"></i>
                                                             </a>

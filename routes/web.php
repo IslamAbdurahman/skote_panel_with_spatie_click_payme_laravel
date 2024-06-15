@@ -19,6 +19,9 @@ Auth::routes();
 Route::get('auth/google', [\App\Http\Controllers\Auth\SocialController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [\App\Http\Controllers\Auth\SocialController::class, 'handleGoogleCallback'])->name('auth.google.callback');
 
+Route::get('auth/facebook', [\App\Http\Controllers\Auth\SocialController::class, 'redirectToFacebook'])->name('auth.facebook');
+Route::get('auth/facebook/callback', [\App\Http\Controllers\Auth\SocialController::class, 'handleFacebookCallback'])->name('auth.facebook.callback');
+
 Route::get('/send_mail', function () {
 
     $code = '11221122aa';
