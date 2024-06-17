@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->date('dob')->nullable();
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
+            $table->string('github_id')->nullable();
             $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();

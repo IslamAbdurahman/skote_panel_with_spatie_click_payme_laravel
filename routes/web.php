@@ -22,6 +22,10 @@ Route::get('auth/google/callback', [\App\Http\Controllers\Auth\SocialController:
 Route::get('auth/facebook', [\App\Http\Controllers\Auth\SocialController::class, 'redirectToFacebook'])->name('auth.facebook');
 Route::get('auth/facebook/callback', [\App\Http\Controllers\Auth\SocialController::class, 'handleFacebookCallback'])->name('auth.facebook.callback');
 
+
+Route::get('auth/github', [\App\Http\Controllers\Auth\SocialController::class, 'redirectToGithub'])->name('auth.github');
+Route::get('auth/github/callback', [\App\Http\Controllers\Auth\SocialController::class, 'handleGithubCallback'])->name('auth.github.callback');
+
 Route::get('/send_mail', function () {
 
     $code = '11221122aa';

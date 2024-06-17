@@ -261,6 +261,12 @@
                                                                 <i class="mdi mdi-google"></i>
                                                             </a>
                                                         </li>
+                                                        <li class="list-inline-item">
+                                                            <a href="{{ route('auth.github') }}"
+                                                               class="social-list-item bg-danger text-white border-danger">
+                                                                <i class="mdi mdi-github"></i>
+                                                            </a>
+                                                        </li>
                                                     </ul>
                                                 </div>
 
