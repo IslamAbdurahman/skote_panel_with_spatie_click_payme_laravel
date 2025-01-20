@@ -27,11 +27,11 @@
                 $('#current_passwordError').text('');
                 $('#passwordError').text('');
                 $('#password_confirmError').text('');
-                if(response.isSuccess == false){ 
+                if(response.isSuccess == false){
                     $('#current_passwordError').text(response.Message);
                 }else if(response.isSuccess == true){
-                    setTimeout(function () {   
-                        window.location.href = "{{ route('root') }}"; 
+                    setTimeout(function () {
+                        window.location.href = "{{ route('root') }}";
                     }, 1000);
                 }
             },
@@ -42,6 +42,54 @@
             }
         });
     });
+</script>
+
+
+<script src="{{ asset('/assets/libs/toastr/toastr.min.js') }}"></script>
+
+<script>
+    function succesToast(message) {
+        toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            timeOut: 3000, // Time to close the toast in milliseconds (adjust as needed)
+            positionClass: 'toast-bottom-right', // Set the position to bottom right
+        };
+
+        toastr.success(message);
+    }
+
+    function dangerToast(message,header) {
+        toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            timeOut: 3000, // Time to close the toast in milliseconds (adjust as needed)
+            positionClass: 'toast-bottom-right', // Set the position to bottom right
+        };
+
+        toastr.error(message,header);
+    }
+
+    @if(session('success'))
+    succesToast('{{ session('success') }}',document.title)
+    @elseif(session('error'))
+    dangerToast('{{ session('error') }}',document.title)
+    @endif
+
+    {{--    @if(session('success'))--}}
+    {{--    toastr.success('{{ session('success') }}');--}}
+    {{--    @endif--}}
+    {{--    @if(session('error'))--}}
+    {{--    toastr.error('{{ session('error') }}');--}}
+    {{--    @endif--}}
+
+    {{--    @if(session('info'))--}}
+    {{--    toastr.info('{{ session('info') }}');--}}
+    {{--    @endif--}}
+
+    {{--    @if(session('warning'))--}}
+    {{--    toastr.warning('{{ session('warning') }}');--}}
+    {{--    @endif--}}
 </script>
 
 @yield('script')
